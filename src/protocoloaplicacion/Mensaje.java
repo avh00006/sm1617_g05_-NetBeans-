@@ -9,9 +9,10 @@ package protocoloaplicacion;
  *
  * @author Francisco
  */
-public class Mensaje {
+public class Mensaje implements Protocolo{
     
     protected String header="";
+    protected Protocolo SP;
     protected Datos data = null;
     protected Protocolo CRLF;
     
@@ -19,41 +20,52 @@ public class Mensaje {
         
         this.header = cabecera;
         this.data = data;
-        
-    
     }
     
     public byte[]toByteArray(){
     
-        String mensaje = header +" " +data.toString()+CRLF;
-        return mensaje.getBytes();
-               
+        String mensaje = header +SP+data.toString()+CRLF;
+        return mensaje.getBytes();  
     }
     
-  
+    
     
 }
-
-
+/**Clase que contendrá los datos
+ * 
+ * @author Francisco, Ángel
+ */
 class Datos{
     
-    protected int param1;
-    protected String param2;
+    protected int id;
+    protected String rutina;
+    /**Constructor que monta los datos que crea el servidor como respuesta a  una 
+     * petición del cliente
+     * 
+     * @param id identificador de usuario asociado a una rutina y dieta correspondiente
+     * @param rutina String que contendrá la rutina (en el futuro puede ser una clase rutina)
+     */
+    public Datos(int id, String rutina){
     
-    public Datos(int p1, String p2){
-    
-        this.param1 = p1;
-        this.param2 = p2;
-        
+        this.id = id;
+        this.rutina = rutina;
     
     }
-    
-    
+    /**Constructor que monta los datos cuando el cliente envia una petición al servidor
+     * 
+     * @param id identificador de usuario
+     */
+    public Datos(int id){
+        this.id = id;
+    }
 
+    /**Este método permite mostrar la información completa del objeto
+     * 
+     * @return 
+     */
     public String toString(){
-        return param2+""+String.valueOf(param1);
+        return String.valueOf(id)+" "+rutina;
     }
-    
-    
+     
 }
 

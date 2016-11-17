@@ -1,5 +1,9 @@
 package protocoloaplicacion;
 
+/**
+ * 
+ * @author Francisco, Ángel
+ */
 public interface Protocolo {
     
 	public static final int TCP_SERVICE_PORT = 6000;	
@@ -20,7 +24,7 @@ public interface Protocolo {
 	public static final String CRLF = "\r\n";
 	public static final String SP = " ";
         
-        public static final String HEADER = NOMBRE+SP+APELL+SP+DNI+SP+MAIL;
+        //public static final String HEADER = NOMBRE+SP+APELL+SP+DNI+SP+MAIL;
 	
 	public static final int S_USER=0; 
 	public static final int S_PASS=1;
