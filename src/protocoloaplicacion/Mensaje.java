@@ -36,6 +36,18 @@ public class Mensaje implements Protocolo{
     }
     
     
+    /**Este método permite mostrar la información completa del objeto
+     * 
+     * @return devuelve el mensaje
+     */
+    public String toString(){
+        
+        return header+SP+data+CRLF;
+        
+    }
+    
+  
+    
     
 }
 /**Clase que contendrá los datos
