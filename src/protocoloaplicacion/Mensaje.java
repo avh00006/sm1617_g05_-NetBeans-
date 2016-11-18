@@ -5,23 +5,30 @@
  */
 package protocoloaplicacion;
 
-/**
+/** Clase que contiene el mensaje 
  *
- * @author Francisco
+ * @author Francisco,Ángel
  */
 public class Mensaje implements Protocolo{
     
     protected String header="";
-    protected Protocolo SP;
     protected Datos data = null;
-    protected Protocolo CRLF;
     
+    /**Constructor para el mensaje
+     * 
+     * @param cabecera contiene los identificadores de la cabecera
+     * @param data variable para los datos del mensaje
+     */
     public Mensaje(String cabecera, Datos data){
         
         this.header = cabecera;
         this.data = data;
     }
     
+    /**Método que devuelve un array de bytes
+     * 
+     * @return devuelve el mensaje en un array de bytes
+     */
     public byte[]toByteArray(){
     
         String mensaje = header +SP+data.toString()+CRLF;
@@ -61,7 +68,7 @@ class Datos{
 
     /**Este método permite mostrar la información completa del objeto
      * 
-     * @return 
+     * @return devuelve un String con el identificador de usuario y la rutina
      */
     public String toString(){
         return String.valueOf(id)+" "+rutina;
